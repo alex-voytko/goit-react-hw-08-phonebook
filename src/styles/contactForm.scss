@@ -1,0 +1,30 @@
+@import './vars.scss';
+
+.phonebook-cont {
+    > h2 {
+        color: $lightText;
+    }
+    button {
+        width: 90px;
+        height: 24px;
+        display: block;
+        border-radius: 5px;
+        &:hover {
+            color: $insideGrey;
+        }
+    }
+    .label {
+        width: 70px;
+        display: block;
+    }
+}
+.input {
+    display: inline;
+    color: $darkTurquoise;
+    background-color: $insideGrey;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    &:nth-last-child(2) {
+        margin-bottom: 30px;
+    }
+}

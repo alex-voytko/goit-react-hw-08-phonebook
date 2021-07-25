@@ -1,0 +1,28 @@
+header {
+    height: 70px;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #b8b8b8;
+}
+.logo-title {
+    width: 500px;
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 3px;
+    opacity: 0.3;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.nav-container-1 {
+    width: 200px;
+}
+.nav-container-2 {
+    display: flex;
+    width: 200px;
+    justify-content: flex-end;
+}

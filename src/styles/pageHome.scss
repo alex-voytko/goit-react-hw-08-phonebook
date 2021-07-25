@@ -1,0 +1,14 @@
+.homepage-container {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.homepage-title {
+    font-weight: 200;
+    letter-spacing: 3px;
+    span {
+        color: #a34a0e;
+        font-weight: 300;
+    }
+}

@@ -1,0 +1,32 @@
+@import './vars.scss';
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: $darkBackground;
+    margin: 0;
+}
+input {
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+}
+ul {
+    list-style-type: none;
+}
+p {
+    color: $lightText2;
+}
+label {
+    color: $darkTurquoise2;
+    font-weight: 200;
+}
+button {
+    border: none;
+    color: $lightText;
+    background-color: $btnBackground;
+}
+button:hover {
+    background-color: $lightText;
+    cursor: pointer;
+}
