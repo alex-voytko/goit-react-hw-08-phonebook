@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: $darkBackground;
     margin: 0;
 }
 input {
@@ -14,19 +13,14 @@ input {
 ul {
     list-style-type: none;
 }
-p {
-    color: $lightText2;
-}
+
 label {
-    color: $darkTurquoise2;
     font-weight: 200;
 }
 button {
     border: none;
-    color: $lightText;
-    background-color: $btnBackground;
+    border-radius: 5px;
 }
 button:hover {
-    background-color: $lightText;
     cursor: pointer;
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import authOperations from '../redux/auth/auth-operations';
 
 class RegisterPage extends Component {
     state = {
@@ -21,17 +23,18 @@ class RegisterPage extends Component {
         const { name, email, password } = this.state;
         return (
             <>
-                <div>
-                    <h1>Sign Up Now!</h1>
+                <div className="form-container">
+                    <h1 className="form-title">Sign Up Now!</h1>
 
                     <form
                         onSubmit={this.handleSubmit}
-                        style="register-form"
                         autoComplete="off"
+                        className="form-auth"
                     >
-                        <label style="register-label">
+                        <label className="form-label">
                             Name
                             <input
+                                className="form-input"
                                 type="text"
                                 name="name"
                                 value={name}
@@ -39,9 +42,10 @@ class RegisterPage extends Component {
                             />
                         </label>
 
-                        <label style="register-label">
+                        <label className="form-label">
                             E-Mail
                             <input
+                                className="form-input"
                                 type="email"
                                 name="email"
                                 value={email}
@@ -49,9 +53,10 @@ class RegisterPage extends Component {
                             />
                         </label>
 
-                        <label style="register-label">
+                        <label className="form-label">
                             Password
                             <input
+                                className="form-input"
                                 type="password"
                                 name="password"
                                 value={password}
@@ -59,12 +64,17 @@ class RegisterPage extends Component {
                             />
                         </label>
 
-                        <button type="submit">Зарегистрироваться</button>
+                        <button type="submit" className="form-button">
+                            Sign Up
+                        </button>
                     </form>
                 </div>
             </>
         );
     }
 }
+const mapDispatchToProps = {
+    onRegister: authOperations.register,
+};
 
-export default RegisterPage;
+export default connect(null, mapDispatchToProps)(RegisterPage);

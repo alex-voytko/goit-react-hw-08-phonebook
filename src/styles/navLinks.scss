@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 .link {
     display: inline-block;
     text-decoration: none;
@@ -13,6 +15,6 @@
     }
 }
 .active-link {
-    color: #a34a0e;
+    color: $accentColor;
     font-weight: 300;
 }

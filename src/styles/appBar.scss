@@ -1,9 +1,11 @@
+@import './vars.scss';
+
 header {
     height: 70px;
     display: flex;
     // justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #b8b8b8;
+    border-bottom: 1px solid $textDefault;
 }
 .logo-title {
     width: 500px;

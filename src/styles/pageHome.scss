@@ -1,3 +1,5 @@
+@import './vars.scss';
+
 .homepage-container {
     height: 400px;
     display: flex;
@@ -8,7 +10,7 @@
     font-weight: 200;
     letter-spacing: 3px;
     span {
-        color: #a34a0e;
+        color: $accentColor;
         font-weight: 300;
     }
 }

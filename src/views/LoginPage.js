@@ -21,17 +21,18 @@ class LoginPage extends Component {
         const { email, password } = this.state;
         return (
             <>
-                <div>
-                    <h1>Log In</h1>
+                <div className="form-container">
+                    <h1 className="form-title">Log In</h1>
 
                     <form
                         onSubmit={this.handleSubmit}
-                        style="login-form"
                         autoComplete="off"
+                        className="form-auth"
                     >
-                        <label style="login-label">
+                        <label className="form-label">
                             E-Mail
                             <input
+                                className="form-input"
                                 type="email"
                                 name="email"
                                 value={email}
@@ -39,9 +40,10 @@ class LoginPage extends Component {
                             />
                         </label>
 
-                        <label style="login-label">
+                        <label className="form-label">
                             Password
                             <input
+                                className="form-input"
                                 type="password"
                                 name="password"
                                 value={password}
@@ -49,7 +51,9 @@ class LoginPage extends Component {
                             />
                         </label>
 
-                        <button type="submit">Enter</button>
+                        <button type="submit" className="form-button">
+                            Enter
+                        </button>
                     </form>
                 </div>
             </>

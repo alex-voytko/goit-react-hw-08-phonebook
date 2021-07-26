@@ -5,7 +5,7 @@ import HomePage from './views/HomePage';
 import RegisterPage from './views/RegisterPage';
 import LoginPage from './views/LoginPage';
 import ContactsPage from './views/ContactsPage';
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 import './styles/main.scss';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
                             <Route exact path="/" component={HomePage} />
                             <Route path="/register" component={RegisterPage} />
                             <Route path="/login" component={LoginPage} />
-                            <Route path="/todos" component={ContactsPage} />
+                            <Route path="/contacts" component={ContactsPage} />
                         </Switch>
                     </Container>
                 </Container>
