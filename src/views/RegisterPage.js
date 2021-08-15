@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import authOperations from '../redux/auth/auth-operations';
+import { authOperations } from '../redux/auth';
 
 class RegisterPage extends Component {
     state = {
