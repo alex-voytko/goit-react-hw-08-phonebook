@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authActions from './auth-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
     set(token) {
@@ -16,7 +16,7 @@ const register = credentials => async dispatch => {
     dispatch(authActions.registerRequest());
     console.log();
     try {
-        const response = await axios.post('users/signup', credentials);
+        const response = await axios.post('/users/signup', credentials);
         dispatch(authActions.registerSuccess(response.data));
         console.log(response);
     } catch (error) {
