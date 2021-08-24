@@ -23,13 +23,13 @@ class RegisterPage extends Component {
         const { name, email, password } = this.state;
         return (
             <>
-                <div className="form-container">
+                <div>
                     <h1 className="form-title">Sign Up Now!</h1>
 
                     <form
                         onSubmit={this.handleSubmit}
                         autoComplete="off"
-                        className="form-auth"
+                        className="form-container"
                     >
                         <label className="form-label">
                             Name

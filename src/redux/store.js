@@ -1,8 +1,5 @@
 import { contactsReducer } from './contacts';
-import {
-    configureStore,
-    getDefaultMiddleware,
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
     FLUSH,
     REHYDRATE,
@@ -11,18 +8,12 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
+import { authReducer } from './auth';
 
 const middleware = [
     ...getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: [
-                FLUSH,
-                REHYDRATE,
-                PAUSE,
-                PERSIST,
-                PURGE,
-                REGISTER,
-            ],
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
     }),
 ];
@@ -30,6 +21,7 @@ const middleware = [
 const store = configureStore({
     reducer: {
         contacts: contactsReducer,
+        auth: authReducer,
     },
     middleware,
     devTools: process.env.NODE_ENV === 'development',

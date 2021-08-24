@@ -5,15 +5,17 @@ import { changeFilter, getFilter } from '../../redux/contacts';
 
 const Filter = ({ value, onChange }) => (
     <>
-        <label htmlFor="filter" className="label search">
-            Search Contact
-        </label>
-        <input
-            value={value}
-            name="filter"
-            onChange={onChange}
-            className="input"
-        />
+        <div className="filter-container">
+            <label htmlFor="filter" className="form-label add-contact">
+                Search Contact
+            </label>
+            <input
+                value={value}
+                name="filter"
+                onChange={onChange}
+                className="form-input filter"
+            />
+        </div>
     </>
 );
 

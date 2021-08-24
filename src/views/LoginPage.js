@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authOperations } from '../redux/auth/';
 
 class LoginPage extends Component {
     state = {
@@ -10,7 +12,6 @@ class LoginPage extends Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-
         this.props.onLogin(this.state);
         this.reset();
     };
@@ -21,13 +22,13 @@ class LoginPage extends Component {
         const { email, password } = this.state;
         return (
             <>
-                <div className="form-container">
+                <div>
                     <h1 className="form-title">Log In</h1>
 
                     <form
                         onSubmit={this.handleSubmit}
                         autoComplete="off"
-                        className="form-auth"
+                        className="form-container"
                     >
                         <label className="form-label">
                             E-Mail
@@ -61,4 +62,8 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+const mapDispatchToProps = {
+    onLogin: authOperations.logIn,
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);

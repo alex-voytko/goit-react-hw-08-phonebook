@@ -17,15 +17,37 @@ const register = credentials => async dispatch => {
     console.log();
     try {
         const response = await axios.post('/users/signup', credentials);
+        token.set(response.data.token);
         dispatch(authActions.registerSuccess(response.data));
-        console.log(response);
     } catch (error) {
-        dispatch(authActions.registerError(error));
-        console.log(error);
+        dispatch(authActions.registerError(error.message));
     }
 };
-const logIn = credentials => dispatch => {};
-const logOut = () => dispatch => {};
+
+const logIn = credentials => async dispatch => {
+    dispatch(authActions.loginRequest());
+
+    try {
+        const response = await axios.post('./users/login', credentials);
+        token.set(response.data.token);
+        dispatch(authActions.loginSuccess(response.data));
+    } catch (error) {
+        dispatch(authActions.loginError(error.message));
+    }
+};
+
+const logOut = () => async dispatch => {
+    dispatch(authActions.logoutRequest());
+
+    try {
+        await axios.post('./users/logout');
+
+        token.unset();
+        dispatch(authActions.logoutSuccess());
+    } catch (error) {
+        dispatch(authActions.logoutError(error.message));
+    }
+};
 const getCurrent = () => (dispatch, getState) => {};
 
 export default { register, logIn, logOut, getCurrent };

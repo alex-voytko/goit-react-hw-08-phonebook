@@ -39,12 +39,12 @@ class ContactForm extends Component {
         const { id, name, number } = this.state;
         return (
             <>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor={id} className="label name">
+                <form onSubmit={handleSubmit} className="form-container">
+                    <label htmlFor={id} className="form-label add-contact">
                         Name
                     </label>
                     <input
-                        className="input"
+                        className="form-input add-contact"
                         type="text"
                         name="name"
                         id={shortId.generate()}
@@ -54,11 +54,11 @@ class ContactForm extends Component {
                         onChange={inputName}
                         value={name}
                     />
-                    <label htmlFor={id} className="label number">
+                    <label htmlFor={id} className="form-label add-contact">
                         Number
                     </label>
                     <input
-                        className="input"
+                        className="form-input add-contact"
                         type="tel"
                         name="number"
                         id={shortId.generate()}
@@ -68,7 +68,9 @@ class ContactForm extends Component {
                         onChange={inputName}
                         value={number}
                     />
-                    <button type="submit">Add contact</button>
+                    <button type="submit" className="form-button add-contact">
+                        Add contact
+                    </button>
                 </form>
             </>
         );

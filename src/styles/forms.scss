@@ -1,0 +1,67 @@
+@import './vars.scss';
+
+.form-label {
+    width: 320;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    &.add-contact {
+        margin-bottom: 0;
+    }
+}
+.form-input {
+    background-color: white;
+    color: $accentColor;
+    opacity: 0.5;
+    border: 1px solid $textDefault;
+    margin-left: auto;
+    margin-right: auto;
+    &.add-contact {
+        margin-bottom: 20px;
+        &:nth-last-child(2) {
+            margin-bottom: 30px;
+        }
+    }
+    &.filter {
+        margin-left: 30px;
+        margin-right: 0;
+    }
+}
+.form-title {
+    display: block;
+    font-weight: 200;
+    text-align: center;
+    color: $accentColor;
+}
+
+.form-container {
+    text-align: center;
+}
+.form-button {
+    padding: 5px 10px;
+    opacity: 0.5;
+    &.add-contact {
+        display: block;
+        // margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &:hover {
+        color: white;
+        background-color: $accentColor;
+        opacity: 1;
+    }
+}
+.contacts-page-container {
+    display: flex;
+    margin-top: 50px;
+    .phonebook-cont {
+        margin-right: 100px;
+    }
+    .contacts-cont {
+        width: 100%;
+        .filter-container {
+            display: flex;
+        }
+    }
+}
