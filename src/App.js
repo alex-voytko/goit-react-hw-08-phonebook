@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
-import HomePage from './views/HomePage';
-import RegisterPage from './views/RegisterPage';
-import LoginPage from './views/LoginPage';
-import ContactsPage from './views/ContactsPage';
-import { Switch, Route } from 'react-router-dom';
+import Spinner from './components/Spinner/Spinner';
+import { Switch } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
 import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 import './styles/main.scss';
+
+const HomePage = lazy(() => import('./views/HomePage'));
+const RegisterPage = lazy(() => import('./views/RegisterPage'));
+const LoginPage = lazy(() => import('./views/LoginPage'));
+const ContactsPage = lazy(() => import('./views/ContactsPage'));
 
 class App extends Component {
     componentDidMount() {
@@ -21,17 +24,33 @@ class App extends Component {
                 <Container className="container-general">
                     <AppBar />
                     <Container className="container">
-                        <Switch>
-                            <Route exact path="/" component={HomePage} />
-                            <Route path="/register" component={RegisterPage} />
-                            <Route path="/login" component={LoginPage} />
-                            <PrivateRoute
-                                path="/contacts"
-                                component={ContactsPage}
-                                redirectTo="/login"
-                                text="You should to log In to view your contacts"
-                            />
-                        </Switch>
+                        <Suspense fallback={<Spinner />}>
+                            <Switch>
+                                <PublicRoute
+                                    exact
+                                    path="/"
+                                    component={HomePage}
+                                />
+                                <PublicRoute
+                                    path="/register"
+                                    restricted
+                                    component={RegisterPage}
+                                    redirectTo="/contacts"
+                                />
+                                <PublicRoute
+                                    path="/login"
+                                    restricted
+                                    component={LoginPage}
+                                    redirectTo="/contacts"
+                                />
+                                <PrivateRoute
+                                    path="/contacts"
+                                    component={ContactsPage}
+                                    redirectTo="/login"
+                                    text="You should to log In to view your contacts"
+                                />
+                            </Switch>
+                        </Suspense>
                     </Container>
                 </Container>
             </>

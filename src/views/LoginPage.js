@@ -20,7 +20,6 @@ class LoginPage extends Component {
     }
     render() {
         const { email, password } = this.state;
-        const { isAuthenticated } = this.props;
         return (
             <>
                 <div>
