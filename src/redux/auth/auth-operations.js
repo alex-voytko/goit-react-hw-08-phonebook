@@ -1,11 +1,12 @@
 import axios from 'axios';
+import persistReducer from 'redux-persist/lib/persistReducer';
 import authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
     set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer  ${token}`;
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
     unset() {
         axios.defaults.headers.common.Authorization = '';
@@ -48,6 +49,24 @@ const logOut = () => async dispatch => {
         dispatch(authActions.logoutError(error.message));
     }
 };
-const getCurrent = () => (dispatch, getState) => {};
+const getCurrentUser = () => async (dispatch, getState) => {
+    const {
+        auth: { token: persistedToken },
+    } = getState();
 
-export default { register, logIn, logOut, getCurrent };
+    if (!persistedToken) {
+        return;
+    }
+
+    token.set(persistedToken);
+    dispatch(authActions.getCurrentUserRequest());
+
+    try {
+        const response = await axios.get('/users/current');
+        dispatch(authActions.getCurrentUserSuccess(response.data));
+    } catch (error) {
+        dispatch(authActions.getCurrentUserSuccess(error.message));
+    }
+};
+
+export default { register, logIn, logOut, getCurrentUser };

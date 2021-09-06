@@ -22,4 +22,4 @@
 -   Поработай над красивым оформлением интерфейса, можно использовать библиотеку
     компонентов, например [React Bootstrap](https://react-bootstrap.github.io/),
     [Material-UI](https://material-ui.com/) и другие.
--   57:22
+-   09 : 48

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authOperations } from '../redux/auth/';
+import { authOperations, authSelectors } from '../redux/auth/';
 
 class LoginPage extends Component {
     state = {
@@ -20,6 +20,7 @@ class LoginPage extends Component {
     }
     render() {
         const { email, password } = this.state;
+        const { isAuthenticated } = this.props;
         return (
             <>
                 <div>
@@ -61,9 +62,11 @@ class LoginPage extends Component {
         );
     }
 }
-
+const mapStateToProps = state => ({
+    isAuthenticated: authSelectors.getIsAuthenticated(state),
+});
 const mapDispatchToProps = {
     onLogin: authOperations.logIn,
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

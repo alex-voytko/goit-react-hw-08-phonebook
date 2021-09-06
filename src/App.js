@@ -6,9 +6,15 @@ import RegisterPage from './views/RegisterPage';
 import LoginPage from './views/LoginPage';
 import ContactsPage from './views/ContactsPage';
 import { Switch, Route } from 'react-router-dom';
+import { authOperations } from './redux/auth';
+import { connect } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute';
 import './styles/main.scss';
 
 class App extends Component {
+    componentDidMount() {
+        this.props.onGetCurrentUser();
+    }
     render() {
         return (
             <>
@@ -19,7 +25,12 @@ class App extends Component {
                             <Route exact path="/" component={HomePage} />
                             <Route path="/register" component={RegisterPage} />
                             <Route path="/login" component={LoginPage} />
-                            <Route path="/contacts" component={ContactsPage} />
+                            <PrivateRoute
+                                path="/contacts"
+                                component={ContactsPage}
+                                redirectTo="/login"
+                                text="You should to log In to view your contacts"
+                            />
                         </Switch>
                     </Container>
                 </Container>
@@ -28,4 +39,8 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapDispatchToProps = {
+    onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

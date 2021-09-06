@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-    contactsOperations,
-    getVisibleContacts,
-} from '../../redux/contacts';
+import { contactsOperations, getVisibleContacts } from '../../redux/contacts';
 
 class ContactList extends Component {
     static propTypes = {
-        contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+        contacts: PropTypes.arrayOf(PropTypes.object),
         onRemove: PropTypes.func.isRequired,
     };
     componentDidMount() {
@@ -26,9 +23,7 @@ class ContactList extends Component {
                             <button
                                 className="btn-delete"
                                 onClick={() => onRemove(id)}
-                            >
-                                X
-                            </button>
+                            ></button>
                         </li>
                     ))}
                 </ul>
@@ -47,7 +42,4 @@ const mapDispatchToProps = dispatch => ({
     onRemove: id => dispatch(contactsOperations.removeContact(id)),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(ContactList);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
